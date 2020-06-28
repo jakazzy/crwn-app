@@ -28,7 +28,7 @@ class SignUp extends Component {
         password
       );
       await createUserProfileDocument(user, displayName);
-      this.state = {
+      this.setState = {
         displayName: "",
         email: "",
         password: "",
@@ -61,7 +61,7 @@ class SignUp extends Component {
           />
           <FormInput
             type="email"
-            name="displayName"
+            name="email"
             value={email}
             onChange={this.handleChange}
             label="Email"
