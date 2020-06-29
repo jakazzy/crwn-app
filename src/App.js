@@ -14,10 +14,11 @@ import { setCurrentUser }from './redux/user/user.actions'
 
 
 export class App extends Component {
-
+  
   unsubscribeFromAuth = null
 
   componentDidMount(){
+    const {setCurrentUser} = this.props
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       if(userAuth){
         const userRef = await createUserProfileDocument(userAuth)
@@ -30,9 +31,7 @@ export class App extends Component {
           
         })
       }
-      this.setState({
-        currentUser: userAuth
-      })
+      setCurrentUser({ userAuth})
     })
   }
 
